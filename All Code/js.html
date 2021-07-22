@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        #box{color:red;}
+        input[type=text] {
+        background-color: white;
+        background-image: url('search.svg');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding-top: 15px;
+        padding-left: 40px;
+        border-radius: 8px;
+        padding-bottom: 15px;
+        }
+        button{
+        display: inline-block;
+        background-color: #7b38d8;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        padding: 16px;
+        width: 200px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <input type="text" id="name" placeholder="Type something...">
+    <button id="changeColor">Search products</button>
+    <hr>
+    <div id="box">
+        What are you searching for?
+    </div>
+    <script>
+
+        var changeColor = _dg("changeColor");
+        changeColor.addEventListener('click', function(){
+            var name = _dg("name").value;
+            var box = _dg("box");
+            box.innerHTML = "Here are the results for: " + name;
+        });
+
+        function _dg(elementName){
+            return document.getElementById(elementName);
+        }
+
+    </script>
+</body>
+</html>

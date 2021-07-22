@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+<body class="p-24">
+    <div x-data="{
+        visible : false,
+        buttonColor: 'bg-purple-500',
+    }">
+        <button 
+            @mouseover="visible = true" 
+            @mouseout="visible = false" 
+
+            x-bind:class="buttonColor"
+            x-on:click="buttonColor = 'bg-red-500'"
+
+            class="text-white p-2 focus:outline-none"
+        >
+            Toggle
+        </button>
+        <div x-show="visible" class="bg-blue-500 text-white p-4 mt-2">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem voluptates dolores aliquam culpa dicta, officiis illum fugiat suscipit nam sint libero dignissimos velit asperiores inventore molestiae omnis tenetur maiores ex.
+        </div>
+    </div>
+</body>
+</html>

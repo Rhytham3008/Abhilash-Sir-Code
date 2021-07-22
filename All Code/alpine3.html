@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-24">
+    <div class=""x-data="data()">
+        <!-- Accordion -->
+        <div class="m-4 font-extrabold text-3xl">Accordion System</div>
+        <template x-for="(accordion,index) in accordions">
+            <div>
+                <div 
+                    class="bg-blue-500 text-white p-2 cursor-pointer mt-1"
+                    x-text="accordion.title"
+                    @click="visibleAccordion=index"
+                ></div>
+                <div 
+                    class="border p-2 bg-white "
+                    x-text="accordion.body"
+                    x-show="visibleAccordion==index" ></div>
+            </div>
+        </template>
+        <!-- Tab System -->
+        mein chahta hoon ki mein jab click karoon tab system vale button pr to uska color change ho but vo ho nhin raha hai jbki meine sahi likha hai uska code
+        <div class="m-4 font-extrabold text-3xl">Tab System</div>
+        <div class="flex items-center">
+            <template x-for="(tab,index) in tabs">
+                <div class="bg-blue-500 text-white p-2 cursor-pointer mt-1 mr-2 rounded-full"
+                :class="visibleTab == index ? 'bg-blue-500' : 'bg-gray-500'"
+                x-text="tab.title"
+                @click = "visibleTab=index"
+                ></div>
+            </template>
+        </div>
+        <div class="border p-2 bg-white"x-text="tabs[visibleTab].body"></div>
+    </div>
+    <script>
+        function data() {
+            return {
+                visibleAccordion:0,
+                accordions:[
+                    {
+                        title: 'Title 1',
+                        body: 'Title 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque animi placeat obcaecati nemo, aspernatur saepe ipsam rerum illum perferendis earum voluptatem recusandae? Doloribus unde quam architecto nostrum odit sint aspernatur?',
+                    },
+                    {
+                        title: 'Title 2',
+                        body: 'Title 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque animi placeat obcaecati nemo, aspernatur saepe ipsam rerum illum perferendis earum voluptatem recusandae? Doloribus unde quam architecto nostrum odit sint aspernatur?',
+         },
+                    {
+                        title: 'Title 3',
+                        body: 'Title 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque animi placeat obcaecati nemo, aspernatur saepe ipsam rerum illum perferendis earum voluptatem recusandae? Doloribus unde quam architecto nostrum odit sint aspernatur?',
+                    },
+                ],
+                visibleTab:0,
+                tabs:[
+                    {
+                        title: 'Title 1',
+                        body: 'Title 0 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque animi placeat obcaecati nemo, aspernatur saepe ipsam rerum illum perferendis earum voluptatem recusandae? Doloribus unde quam architecto nostrum odit sint aspernatur?',
+                    },
+                    {
+                        title: 'Title 2',
+                        body: 'Title 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque animi placeat obcaecati nemo, aspernatur saepe ipsam rerum illum perferendis earum voluptatem recusandae? Doloribus unde quam architecto nostrum odit sint aspernatur?',
+                    },
+                    {
+                        title: 'Title 3',
+                        body: 'Title 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque animi placeat obcaecati nemo, aspernatur saepe ipsam rerum illum perferendis earum voluptatem recusandae? Doloribus unde quam architecto nostrum odit sint aspernatur?',
+                    },
+                ],
+            };
+        }
+    </script>
+</body>
+</html>

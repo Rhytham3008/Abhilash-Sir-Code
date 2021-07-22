@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-24">
+    <div class=""x-data="data()">
+        <input type="text" placeholder="Search"
+        x-model="searchText"
+        class="border-gray-500 border rounded p-2 focus:outline-none">
+        <button @click="visible = !visible"
+        class=" text-white p-2 focus:outline-none"
+        :class="visible==true ? 'bg-gray-500' : 'bg-purple-700'"
+        x-text="visible ? 'Search' : 'Show'"
+        >
+
+        </button>
+        <div class="text-3xl font-bold">
+            Results For:
+            <span x-text="searchText"></span>
+            are
+        </div>
+        <div x-show="visible" class="bg-blue-500 text-white p-4 mt-2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ducimus ullam quo maiores. Atque minima nemo ipsam molestiae laboriosam, fugit delectus maxime odit fugiat consequuntur mollitia, sapiente numquam dolores optio.
+        </div>
+    </div>
+    <script>
+
+        function data(){
+            return {
+                visible: true,
+                searchText: 'Mobile'
+            };
+        }
+    </script>
+</body>
+</html>

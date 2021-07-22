@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-24">
+    <div x-data="data()">
+        <input type="text"class="border border-black p-2"
+        :value="searchText" 
+        @keyup="searchText = $event.target.value "
+        >
+        <button 
+            class=" text-white p-2 focus:outline-none -ml-1 border border-black"
+            @click="visible=!visible"
+            :class="visible? 'bg-green-500':'bg-red-500' "
+            x-text ="visible ? 'Hide':'Show' "
+        ">
+        </button>
+        <div x-text="searchText"></div>
+        <div x-show="visible"class="bg-purple-500 text-white p-2 mt-2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos suscipit est, enim quos quis nobis. Inventore cumque rem laudantium unde enim nihil illo doloremque maxime dicta necessitatibus, eveniet quo animi!
+        </div>
+
+        <template x-for="name in names">
+            <div x-text="name" class="bg-blue-500 text-white w-64 p-2 mt-2"></div>
+        </template>
+    </div>
+    <script>
+        function data(){
+            return{
+                visible:false,
+                searchText:'Televisions',
+                names:[
+                    'Alice',
+                    'Bob',
+                    'Charlie',
+                    'Daniel',
+                ]
+            };
+        }
+    </script>
+</body>
+</html>
