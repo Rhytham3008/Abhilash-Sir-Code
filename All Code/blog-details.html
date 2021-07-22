@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white">
+    <div class="w-1/2 mx-auto bg-gray-900 p-4 relative"x-data="data()">
+        <div class="h-96 space-y-2 overflow-auto">
+            <template x-for="(chat,index) in chats">
+                <div class="flex " :class="user != chat.from ? 'justify-start' : 'justify-end' ">
+                    <div :class="user != chat.from  ? 'bg-gray-800' : 'bg-blue-500' "class=" p-2 rounded w-2/3">
+                        <a href="#" class="text-xs" x-text="chat.from"x-show="user != chat.from"></a>
+                        <div class="" x-text="chat.text"></div>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <div class="mt-8 sticky bottom-0 flex">
+            <input @keyup.enter="sendMsg()" x-model="msg" type="text" placeholder="Type Your Comment Here..." class="w-full border-2  border-gray-700 p-2 focus:outline-none text-gray-900">
+            <button 
+            class="bg-blue-500 p-2 text-white"
+            @click ="sendMsg()"
+            x-show="user.length > 0 && msg.length > 0"
+            >Send</button>
+        </div>
+        <div class="pt-8">
+            <input type="text" x-model="user" class="border-2 border-gray-700 p-2 focus:outline-none text-gray-900"">
+        </div>
+    </div>
+    <script>
+        function data(){
+            return {
+                user:'',
+                msg: '',
+                chats:[
+                
+                ],
+                sendMsg: function(){
+
+                    if(this.user.trim() == ""){
+                        return false;
+                    }
+
+                    if(this.msg.trim() != ""){
+                        this.chats.push({from: this.user,text: this.msg});
+                        this.msg="";   
+                    }          
+                }
+            }
+        }
+    </script>
+</body>
+</html>
